@@ -4,7 +4,7 @@ A multithreaded CLI tool to download a file from a given URL and transfer downlo
 
 #### Features
 :heavy_check_mark: Multithreaded to allow concurretly downloading different parts of the file.  
-:heavy_check_mark: Detects bad network connections and can pauses/resumes download automatically.   
+:heavy_check_mark: Detects bad network connections and can pause/resume downloads automatically.   
 :heavy_check_mark: The downloaded file can be quickly transferred across devices through a local network using a QR code.  
 :heavy_check_mark: Progress bar to see the status of download.  
 
