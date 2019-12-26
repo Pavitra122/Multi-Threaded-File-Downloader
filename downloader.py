@@ -46,6 +46,7 @@ class Downloader:
         and then fetches new tasks from a queue shared among threads
         '''
 
+        task_interrupted = 0
         while(1):
             # specify the starting and ending locations of the file
             headers = {'Range': 'bytes=%d-%d' % (start_location, end_location)}
@@ -53,9 +54,17 @@ class Downloader:
             # request the specified part and get into variable
                 r = requests.get(url, headers=headers, stream=True)
             except requests.exceptions.RequestException:
-                # Task is not valid, skip
+                # Task was not able to be completed, possibly due to network error.
+                # Add task back to queue and continue
+
+                # Check that the same task is not added to the queue multiple times
+                if not task_interrupted:
+                    self.queue.put({'start_location': start_location, 'end_location': end_location, 'url': self.url, 'filename': self.file_name})
+                    time.sleep(0.5)
+                    task_interrupted = 1
                 continue
 
+            task_interrupted = 0
             # open the file and write the content into appropriate address in file.
             with open(filename, "r+b") as fp:
                 fp.seek(start_location)
@@ -106,11 +115,11 @@ class Downloader:
         try:
             r = requests.head(self.url)
         except:
-            raise ValueError('URL is invalid')
+            raise ValueError('URL is invalid or not connected to internet. Download could not be started')
 
 
         if r.status_code != 200:
-            raise ValueError('URL is invalid')
+            raise ValueError('URL is invalid or not connected to internet. Download could not be started')
 
         self.file_size = int(r.headers['content-length'])
 
