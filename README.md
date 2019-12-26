@@ -77,7 +77,7 @@ Apart from the queue, the threads also share a progress bar that is designed for
 Note: 
 Each task has its own URL and file name to support downloading from multiple URL's at the same time. This will be implemented in the near future.
 
-Credits to [github.com/sdushantha](https://github.com/sdushantha/qr-filetransfer) for sharing files using a QR code. 
+Credits to [github.com/sdushantha](https://github.com/sdushantha/qr-filetransfer) for providing the libary to share files using a QR code. 
 
 
 
