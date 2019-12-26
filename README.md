@@ -3,10 +3,10 @@
 A multithreaded CLI tool to download a file from a given URL and transfer downloaded files acrosss devices easily.
 
 #### Features
-- [x] Multithreaded to allow concurretly downloading different parts of the file.
-- [x] Detects bad network connections and can pauses/resumes download automatically. 
-- [x] The downloaded file can be quickly transferred across devices through a local network using a QR code.
-- [x] Progress bar to see the status of download.
+:heavy_check_mark: Multithreaded to allow concurretly downloading different parts of the file.  
+:heavy_check_mark: Detects bad network connections and can pauses/resumes download automatically.   
+:heavy_check_mark: The downloaded file can be quickly transferred across devices through a local network using a QR code.  
+:heavy_check_mark: Progress bar to see the status of download.  
 
 
 ![Demo](demo/demo.gif)
