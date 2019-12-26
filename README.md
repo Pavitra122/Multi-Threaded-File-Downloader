@@ -32,9 +32,11 @@ Example:
 ./downloader.py "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/BigBuckBunny.jpg"
 ```
 
+Note: If --filename is not provided, the script tries to figure out the extension of the file automatically using the URL.
+
 Can be used as 
 ```
-./downloader.py <URL> -c nThreads --filename <fileName>
+./downloader <URL> -c nThreads --filename <fileName>
 ```
 by renaming downloader.py to downloader. Note that this breaks the dependency link to run the unit tests.
 
