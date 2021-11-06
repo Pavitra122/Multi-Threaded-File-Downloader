@@ -15,7 +15,7 @@ from progress.bar import Bar
 import mimetypes
 
 
-ENABLE_QR_CODE_DOWNLOADS = 1
+ENABLE_QR_CODE_DOWNLOADS = 0
 DEFAULT_NUM_THREADS = 4
 MAX_THREADS = 1000
 CHUNK_SIZE = 1000000                       # Number of bytes that each thread will download in a iteration
