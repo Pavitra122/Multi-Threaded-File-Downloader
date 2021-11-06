@@ -19,6 +19,7 @@ ENABLE_QR_CODE_DOWNLOADS = 1
 DEFAULT_NUM_THREADS = 4
 MAX_THREADS = 1000
 CHUNK_SIZE = 1000000                       # Number of bytes that each thread will download in a iteration
+BLOCK_SIZE = 8192
 
 DEFAULT_FILE_NAME = 'download'             # File name to to save download in if file name is not specified
                                            # with --filename
@@ -135,7 +136,12 @@ class Downloader:
 
         # Initialize file with '\0'
         fp = open(self.file_name, "wb")
-        fp.write(b'\0' * self.file_size)
+        n = self.file_size // BLOCK_SIZE
+        left_size = self.file_size - BLOCK_SIZE * n
+        for i in range(n):
+            fp.write(b'\0' * BLOCK_SIZE)
+        if left_size > 0:
+            fp.write(b'\0' * left_size)
         fp.close()
 
 
